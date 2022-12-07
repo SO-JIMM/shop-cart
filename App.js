@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { NativeBaseProvider, Text, Center, StatusBar } from "native-base"
+import { Provider } from "react-redux"
+import { SafeAreaBox } from "./src/components/safe-area-box/SafeAreaBox"
+import { store } from "./src/store/store"
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <>
+      <Provider store={store}>
+        <NativeBaseProvider>
+          <SafeAreaBox>
+            <Center>
+              <Text>Open up App.js to start working on your app!</Text>
+            </Center>
+          </SafeAreaBox>
+          <StatusBar style='auto' />
+        </NativeBaseProvider>
+      </Provider>
+    </>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
