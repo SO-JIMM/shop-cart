@@ -1,20 +1,22 @@
 import { NativeBaseProvider, Text, Center, StatusBar } from "native-base"
+import { NavigationContainer } from "@react-navigation/native"
+
 import { Provider } from "react-redux"
 import { SafeAreaBox } from "./src/components/safe-area-box/SafeAreaBox"
+import { Navigation } from "./src/infrastructure/navigation/Navigation"
 import { store } from "./src/store/store"
+
 export default function App() {
   return (
-    <>
+    <NativeBaseProvider>
       <Provider store={store}>
-        <NativeBaseProvider>
+        <NavigationContainer>
           <SafeAreaBox>
-            <Center>
-              <Text>Open up App.js to start working on your app!</Text>
-            </Center>
+            <Navigation />
           </SafeAreaBox>
-          <StatusBar style='auto' />
-        </NativeBaseProvider>
+        </NavigationContainer>
       </Provider>
-    </>
+      <StatusBar style='auto' />
+    </NativeBaseProvider>
   )
 }
